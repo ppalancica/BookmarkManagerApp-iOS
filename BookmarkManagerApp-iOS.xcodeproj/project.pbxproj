@@ -7,19 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B35BC083284E95DA00F2A184 /* BookmarksDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B35BC081284E95DA00F2A184 /* BookmarksDataModel.xcdatamodeld */; };
+		B3638BC8284E9E8A007A0C8C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = B3638BC7284E9E8A007A0C8C /* README.md */; };
+		B3638BCA284E9F49007A0C8C /* BookmarkListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3638BC9284E9F49007A0C8C /* BookmarkListTableViewController.swift */; };
 		B3BB5BB2284E8CF300727730 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BB5BB1284E8CF300727730 /* AppDelegate.swift */; };
 		B3BB5BB4284E8CF300727730 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BB5BB3284E8CF300727730 /* SceneDelegate.swift */; };
-		B3BB5BB6284E8CF300727730 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BB5BB5284E8CF300727730 /* ViewController.swift */; };
 		B3BB5BB9284E8CF300727730 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3BB5BB7284E8CF300727730 /* Main.storyboard */; };
 		B3BB5BBB284E8CF600727730 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3BB5BBA284E8CF600727730 /* Assets.xcassets */; };
 		B3BB5BBE284E8CF600727730 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3BB5BBC284E8CF600727730 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B35BC082284E95DA00F2A184 /* BookmarksDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BookmarksDataModel.xcdatamodel; sourceTree = "<group>"; };
+		B3638BC7284E9E8A007A0C8C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		B3638BC9284E9F49007A0C8C /* BookmarkListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkListTableViewController.swift; sourceTree = "<group>"; };
 		B3BB5BAE284E8CF300727730 /* BookmarkManagerApp-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BookmarkManagerApp-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3BB5BB1284E8CF300727730 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3BB5BB3284E8CF300727730 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B3BB5BB5284E8CF300727730 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B3BB5BB8284E8CF300727730 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B3BB5BBA284E8CF600727730 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B3BB5BBD284E8CF600727730 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -40,6 +44,7 @@
 		B3BB5BA5284E8CF300727730 = {
 			isa = PBXGroup;
 			children = (
+				B3638BC7284E9E8A007A0C8C /* README.md */,
 				B3BB5BB0284E8CF300727730 /* BookmarkManagerApp-iOS */,
 				B3BB5BAF284E8CF300727730 /* Products */,
 			);
@@ -58,11 +63,12 @@
 			children = (
 				B3BB5BB1284E8CF300727730 /* AppDelegate.swift */,
 				B3BB5BB3284E8CF300727730 /* SceneDelegate.swift */,
-				B3BB5BB5284E8CF300727730 /* ViewController.swift */,
 				B3BB5BB7284E8CF300727730 /* Main.storyboard */,
 				B3BB5BBA284E8CF600727730 /* Assets.xcassets */,
 				B3BB5BBC284E8CF600727730 /* LaunchScreen.storyboard */,
 				B3BB5BBF284E8CF600727730 /* Info.plist */,
+				B35BC081284E95DA00F2A184 /* BookmarksDataModel.xcdatamodeld */,
+				B3638BC9284E9F49007A0C8C /* BookmarkListTableViewController.swift */,
 			);
 			path = "BookmarkManagerApp-iOS";
 			sourceTree = "<group>";
@@ -127,6 +133,7 @@
 			files = (
 				B3BB5BBE284E8CF600727730 /* LaunchScreen.storyboard in Resources */,
 				B3BB5BBB284E8CF600727730 /* Assets.xcassets in Resources */,
+				B3638BC8284E9E8A007A0C8C /* README.md in Resources */,
 				B3BB5BB9284E8CF300727730 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,9 +145,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3BB5BB6284E8CF300727730 /* ViewController.swift in Sources */,
+				B3638BCA284E9F49007A0C8C /* BookmarkListTableViewController.swift in Sources */,
 				B3BB5BB2284E8CF300727730 /* AppDelegate.swift in Sources */,
 				B3BB5BB4284E8CF300727730 /* SceneDelegate.swift in Sources */,
+				B35BC083284E95DA00F2A184 /* BookmarksDataModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,6 +364,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B35BC081284E95DA00F2A184 /* BookmarksDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B35BC082284E95DA00F2A184 /* BookmarksDataModel.xcdatamodel */,
+			);
+			currentVersion = B35BC082284E95DA00F2A184 /* BookmarksDataModel.xcdatamodel */;
+			path = BookmarksDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B3BB5BA6284E8CF300727730 /* Project object */;
 }
