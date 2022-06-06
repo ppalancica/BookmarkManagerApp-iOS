@@ -1,10 +1,18 @@
 # BookmarkManagerApp-iOS
 
-sqlite3 file:///Users/ppalancica/Library/Developer/CoreSimulator/Devices/714974A4-0002-475B-8FC8-6E128CF99CF1/data/Containers/Data/Application/2C6BF316-A6F6-44C6-9FFA-32B57FEDB87C/Documents/BookmarksDataModel.sqlite
+cd "///Users/ppalancica/Library/Developer/CoreSimulator/Devices/714974A4-0002-475B-8FC8-6E128CF99CF1/data/Containers/Data/Application/D9D7CA33-DFA7-4DB0-A666-8273C312E0DF/Documents/"
+
+sqlite3 BookmarksDataModel.sqlite
+
+---
+Or:
+sqlite3 file:///Users/ppalancica/Library/Developer/CoreSimulator/Devices/714974A4-0002-475B-8FC8-6E128CF99CF1/data/Containers/Data/Application/D9D7CA33-DFA7-4DB0-A666-8273C312E0DF/Documents/BookmarksDataModel.sqlite
 
 sqlite> .schema
 CREATE TABLE ZBOOKMARKLIST ( Z_PK INTEGER PRIMARY KEY, Z_ENT INTEGER, Z_OPT INTEGER, ZTITLE VARCHAR );
 CREATE TABLE Z_PRIMARYKEY (Z_ENT INTEGER PRIMARY KEY, Z_NAME VARCHAR, Z_SUPER INTEGER, Z_MAX INTEGER);
 CREATE TABLE Z_METADATA (Z_VERSION INTEGER PRIMARY KEY, Z_UUID VARCHAR(255), Z_PLIST BLOB);
 CREATE TABLE Z_MODELCACHE (Z_CONTENT BLOB);
+
+sqlite> SELECT * FROM ZBOOKMARKLIST;
 

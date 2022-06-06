@@ -20,6 +20,8 @@ class BookmarkListTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        initializeCoreDataStack()
     }
 
     // MARK: - Table view data source
@@ -99,6 +101,7 @@ class BookmarkListTableViewController: UITableViewController {
         headerView.backgroundColor = .lightText
         
         let textField = UITextField(frame: headerViewFrame)
+        textField.delegate = self
         textField.placeholder = "Enter BookmarkList title"
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         textField.leftViewMode = .always
@@ -109,6 +112,17 @@ class BookmarkListTableViewController: UITableViewController {
         return headerView
     }
 
+}
+
+extension BookmarkListTableViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let bookmarkList = NSEntityDescription.insertNewObject(forEntityName: "BookmarkList", into: self.managedObjectContext) as! BookmarkList
+        
+        bookmarkList.title = textField.text
+        try! self.managedObjectContext.save()
+        
+        return textField.resignFirstResponder()
+    }
 }
 
 private extension BookmarkListTableViewController {
