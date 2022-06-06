@@ -11,6 +11,7 @@ import CoreData
 class BookmarkListTableViewController: UITableViewController {
 
     var managedObjectContext: NSManagedObjectContext!
+    var fetchedResultsController: NSFetchedResultsController<BookmarkList>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,7 @@ class BookmarkListTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         initializeCoreDataStack()
+        populateBookmarkList()
     }
 
     // MARK: - Table view data source
@@ -32,19 +34,21 @@ class BookmarkListTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        guard let sections = self.fetchedResultsController.sections else {
+            return 0
+        }
+        return sections[section].numberOfObjects
     }
-
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BookmarkListCell", for: indexPath)
+        
         // Configure the cell...
+        let bookmarkList = self.fetchedResultsController.object(at: indexPath)
+        cell.textLabel?.text = bookmarkList.title
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
@@ -114,6 +118,15 @@ class BookmarkListTableViewController: UITableViewController {
 
 }
 
+extension BookmarkListTableViewController: NSFetchedResultsControllerDelegate {
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange anObject: Any, at indexPath: IndexPath?,
+                    for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        self.tableView.insertRows(at: [newIndexPath!], with: .automatic)
+    }
+}
+
 extension BookmarkListTableViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let bookmarkList = NSEntityDescription.insertNewObject(forEntityName: "BookmarkList", into: self.managedObjectContext) as! BookmarkList
@@ -126,6 +139,21 @@ extension BookmarkListTableViewController: UITextFieldDelegate {
 }
 
 private extension BookmarkListTableViewController {
+    func populateBookmarkList() {
+        let fetchRequest = NSFetchRequest<BookmarkList>(entityName: "BookmarkList")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        
+        self.fetchedResultsController = NSFetchedResultsController(
+            fetchRequest: fetchRequest,
+            managedObjectContext: self.managedObjectContext,
+            sectionNameKeyPath: nil,
+            cacheName: nil
+        )
+        self.fetchedResultsController.delegate = self
+        
+        try! self.fetchedResultsController.performFetch()
+    }
+    
     func initializeCoreDataStack() {
         guard let modelURL = Bundle.main.url(forResource: "BookmarksDataModel", withExtension: "momd") else {
             fatalError("BookmarksDataModel not found")
