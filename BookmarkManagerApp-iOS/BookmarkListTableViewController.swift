@@ -123,7 +123,22 @@ extension BookmarkListTableViewController: NSFetchedResultsControllerDelegate {
                     didChange anObject: Any, at indexPath: IndexPath?,
                     for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         
-        self.tableView.insertRows(at: [newIndexPath!], with: .automatic)
+        if type == .insert {
+            self.tableView.insertRows(at: [newIndexPath!], with: .automatic)
+        } else if type == .delete {
+            self.tableView.deleteRows(at: [indexPath!], with: .automatic)
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let bookmarkList = self.fetchedResultsController.object(at: indexPath)
+        
+            self.managedObjectContext.delete(bookmarkList)
+            try! self.managedObjectContext.save()
+        }
+        
+        self.tableView.isEditing = false
     }
 }
 
