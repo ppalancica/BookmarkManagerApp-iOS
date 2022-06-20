@@ -22,7 +22,6 @@ class BookmarkListTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        initializeCoreDataStack()
         populateBookmarkList()
     }
 
@@ -167,29 +166,5 @@ private extension BookmarkListTableViewController {
         self.fetchedResultsController.delegate = self
         
         try! self.fetchedResultsController.performFetch()
-    }
-    
-    func initializeCoreDataStack() {
-        guard let modelURL = Bundle.main.url(forResource: "BookmarksDataModel", withExtension: "momd") else {
-            fatalError("BookmarksDataModel not found")
-        }
-        
-        guard let managedObjectModel = NSManagedObjectModel(contentsOf: modelURL) else {
-            fatalError("Unable to initialize ManagedObjectModel")
-        }
-        
-        let fileManager = FileManager()
-        guard let documentsURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
-            fatalError("Unable to get documents URL")
-        }
-        let storeURL = documentsURL.appendingPathComponent("BookmarksDataModel.sqlite")
-        print(storeURL)
-        
-        let persistenceStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
-        try! persistenceStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: storeURL, options: nil)
-        
-        let concurrencyType = NSManagedObjectContextConcurrencyType.mainQueueConcurrencyType
-        self.managedObjectContext = NSManagedObjectContext(concurrencyType: concurrencyType)
-        self.managedObjectContext.persistentStoreCoordinator = persistenceStoreCoordinator
     }
 }
